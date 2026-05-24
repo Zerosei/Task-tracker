@@ -18,6 +18,7 @@ import { addTask } from "./functions/addTask.js"
 import { listTasks } from "./functions/listTasks.js";
 import { deleteTask } from "./functions/deleteTask.js";
 import { updateTask } from "./functions/updateTask.js";
+import { markInProgress, markDone } from "./functions/markTask.js";
 import readline from 'readline/promises';
 import fs from 'fs'
 
@@ -43,6 +44,12 @@ while(true) {
     }
     if (entrada.slice(0,6) === "delete"){
         deleteTask(entrada.slice(6).trim())
+    }
+    if (entrada.slice(0,16) === "mark-in-progress"){
+        markInProgress(entrada.slice(16).trim())
+    }
+    if (entrada.slice(0,9) === "mark-done"){
+        markDone(entrada.slice(9).trim())
     }
     if (entrada === "exit"){
         rl.close();
