@@ -17,6 +17,7 @@
 import { addTask } from "./functions/addTask.js"
 import { listTasks } from "./functions/listTasks.js";
 import { deleteTask } from "./functions/deleteTask.js";
+import { updateTask } from "./functions/updateTask.js";
 import readline from 'readline/promises';
 import fs from 'fs'
 
@@ -36,6 +37,9 @@ while(true) {
     }
     if (entrada.slice(0,4) === "list"){
         listTasks(entrada.slice(4).trim())
+    }
+    if (entrada.slice(0,6) === "update"){
+        updateTask(entrada.slice(6).trim())
     }
     if (entrada.slice(0,6) === "delete"){
         deleteTask(entrada.slice(6).trim())
