@@ -14,8 +14,9 @@
 // Usa el módulo nativo de sistema de archivos de tu lenguaje para interactuar con el JSON.
 // No uses librerías o frameworks externos.
 // Maneja los errores y casos extremos de forma adecuada.
-import {addTask} from "./functions/addTask.js"
+import { addTask } from "./functions/addTask.js"
 import { listTasks } from "./functions/listTasks.js";
+import { deleteTask } from "./functions/deleteTask.js";
 import readline from 'readline/promises';
 import fs from 'fs'
 
@@ -26,7 +27,6 @@ while(true) {
         fs.writeFileSync('tasks.json', JSON.stringify([], null, 2));
     }
     const entrada = await rl.question('Task Tracker: ')
-
     if (entrada.slice(0,3) === "add"){
         try {
             addTask(entrada.slice(3).trim())
@@ -36,6 +36,9 @@ while(true) {
     }
     if (entrada.slice(0,4) === "list"){
         listTasks(entrada.slice(4).trim())
+    }
+    if (entrada.slice(0,6) === "delete"){
+        deleteTask(entrada.slice(6).trim())
     }
     if (entrada === "exit"){
         rl.close();
