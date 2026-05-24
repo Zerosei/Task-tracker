@@ -15,6 +15,7 @@
 // No uses librerías o frameworks externos.
 // Maneja los errores y casos extremos de forma adecuada.
 import {addTask} from "./functions/addTask.js"
+import { listTasks } from "./functions/listTasks.js";
 import readline from 'readline/promises';
 import fs from 'fs'
 
@@ -32,6 +33,9 @@ while(true) {
         } catch {
             throw new Error("Nueva tarea requiere nombre")
         }
+    }
+    if (entrada.slice(0,4) === "list"){
+        listTasks(entrada.slice(4).trim())
     }
     if (entrada === "exit"){
         rl.close();
