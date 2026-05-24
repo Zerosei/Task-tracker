@@ -6,7 +6,8 @@ export function addTask(description){
     // Para el id de nueva tarea medimos la longitud
     const id = tasks.length;
     // Creamos un objeto de nueva tarea que pushearemos al json 
-    const newTask = {id: id, description: description, status: "todo", createdAt: Date.now().toLocaleDateString, updatedAt: Date.now().toLocaleDateString};
+    const now = new Date().toLocaleDateString();
+    const newTask = {id: id, description: description, status: "todo", createdAt: now, updatedAt: now};
     tasks.push(newTask)
     // Guardamos en el json
     fs.writeFileSync("tasks.json", JSON.stringify(tasks, null, 2))
