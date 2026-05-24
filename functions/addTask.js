@@ -1,6 +1,6 @@
-const fs = require('fs')
+import fs from 'fs'
 
-function addTask(description){
+export function addTask(description){
     // Accedemos al JSON de tareas
     const tasks = JSON.parse(fs.readFileSync('tasks.json', 'utf8'));
     // Para el id de nueva tarea medimos la longitud

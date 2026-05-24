@@ -14,11 +14,9 @@
 // Usa el módulo nativo de sistema de archivos de tu lenguaje para interactuar con el JSON.
 // No uses librerías o frameworks externos.
 // Maneja los errores y casos extremos de forma adecuada.
-import {addTask} from "addTask.js"
-
-
+import {addTask} from "./functions/addTask.js"
 import readline from 'readline/promises';
-const fs = require('fs')
+import fs from 'fs'
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
@@ -28,8 +26,12 @@ while(true) {
     }
     const entrada = await rl.question('Task Tracker: ')
 
-    if (entrada === "add"){
-        addTask("Hola")
+    if (entrada.slice(0,3) === "add"){
+        try {
+            addTask(entrada.slice(3).trim())
+        } catch {
+            throw new Error("Nueva tarea requiere nombre")
+        }
     }
     if (entrada === "exit"){
         rl.close();
